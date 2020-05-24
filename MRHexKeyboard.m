@@ -271,7 +271,7 @@ static UIColor *sGrayColour = nil;
     [self changeButtonBackgroundColourForHighlight:button];
     if(_input == nil) return;
     
-    NSString *text = button.titleLabel.text;
+    NSString *text = [button.titleLabel.text lowercaseString];
     if ([_input respondsToSelector:@selector(shouldChangeTextInRange:replacementText:)]) {
         UITextRange *tr = [_input selectedTextRange];
         if (tr != nil && [_input shouldChangeTextInRange:(UITextRange * _Nonnull)tr replacementText:text]) {
