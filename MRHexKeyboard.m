@@ -96,7 +96,7 @@ static UIColor *sGrayColour = nil;
         }
         self.numberButtons = buttons;
         
-        self.zeroxButton = [self makeButtonWithTitle:@"0x" grayBackground:YES];
+        self.zeroxButton = [self makeButtonWithTitle:@"#" grayBackground:YES];
         self.display0xButton = _display0xButton;
         
         self.zeroButton = [self makeButtonWithTitle:@"0" grayBackground:NO];
@@ -232,7 +232,7 @@ static UIColor *sGrayColour = nil;
     }
     
     button.backgroundColor = (grayBackground) ? sGrayColour : [UIColor whiteColor];
-    button.titleLabel.font = [UIFont systemFontOfSize:fontSize];
+    button.titleLabel.font = [UIFont fontWithName:@"Menlo-Bold" size:16.0];
     
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button setTitle:title forState:UIControlStateNormal];
@@ -347,14 +347,14 @@ static UIColor *sGrayColour = nil;
         if(string.length > 0) { // insert
             // Auto-add 0x after inserting first nibble
             if(range.location == 0) {
-                textField.text = [NSString stringWithFormat:@"0x%@", string];
+                textField.text = [NSString stringWithFormat:@"#%@", string];
                 return NO;
             }
             
             // Auto-add 0x after appending second nibble
             if (range.length == 0 && range.location >= 4 &&
                 (range.location - 4) % 5 == 0) {
-                textField.text = [NSString stringWithFormat:@"%@ 0x%@", textField.text, string];
+                textField.text = [NSString stringWithFormat:@"%@ #%@", textField.text, string];
                 return NO;
             }
         } else { // delete
